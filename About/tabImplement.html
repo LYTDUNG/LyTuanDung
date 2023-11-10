@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Tab Implement</title>
+</head>
+<body>
+    <section id="tabImplement">
+        <header>
+            <h1>CỬA HÀNG KEM</h1>
+        </header>
+    
+        <section>
+            <table id="kemTable">
+                <!-- Dữ liệu của kem sẽ được hiển thị ở đây -->
+            </table>
+    
+            <form id="kemForm">
+                <label for="tenKem">Tên Kem:</label>
+                <input type="text" id="tenKem" name="tenKem" required>
+    
+                <label for="gia">Giá:</label>
+                <input type="number" id="gia" name="gia" required min="0">
+    
+                <label for="soLuong">Số Lượng:</label>
+                <input type="number" id="soLuong" name="soLuong" required min="0">
+    
+                <!-- Thêm một trường ẩn để lưu index của kem đang được sửa -->
+                <input type="hidden" id="currentIndex" value="">
+    
+                <button type="button" onclick="themSuaKem()">Thêm</button>
+
+                <label for="tuKhoa">Tìm Kiếm:</label>
+                <input type="text" id="tuKhoa" name="tuKhoa">
+                <button type="button" onclick="timKiem()">Tìm Kiếm</button>
+
+            </form>
+        </section>
+    
+        <script>
+            let kemData = [];
+            let coDuLieu = false; // Biến theo dõi trạng thái có dữ liệu hay không
+            let daTimKiem = false; // Biến theo dõi trạng thái đã thực hiện tìm kiếm hay chưa
+    
+            // Hiển thị dữ liệu lên bảng
+            function hienThiDuLieu(danhSach) {
+                let table = document.getElementById('kemTable');
+                
+                // Kiểm tra nếu có dữ liệu thì hiển thị hàng tiêu đề
+                if (coDuLieu || daTimKiem) {
+                    table.innerHTML = '<tr><th>Tên Kem</th><th>Giá</th><th>Số Lượng</th><th>Thao Tác</th></tr>';
+                } else {
+                    table.innerHTML = ''; // Nếu không có dữ liệu, không hiển thị hàng tiêu đề
+                }
+    
+                // Chèn dữ liệu từ danh sách được đưa vào (hoặc danh sách toàn bộ nếu không có tìm kiếm)
+                let danhSachHienThi = danhSach ? danhSach : kemData;
+    
+                for (let i = 0; i < danhSachHienThi.length; i++) {
+                    let row = table.insertRow();
+                    row.insertCell(0).innerHTML = danhSachHienThi[i].tenKem;
+                    row.insertCell(1).innerHTML = danhSachHienThi[i].gia;
+                    row.insertCell(2).innerHTML = danhSachHienThi[i].soLuong;
+                    row.insertCell(3).innerHTML = '<button onclick="suaKem(this)">Sửa</button>' +
+                                                  '<button onclick="xoaKem(this)">Xóa</button>';
+                }
+            }
+    
+            // Thêm/sửa thông tin kem
+            function themSuaKem() {
+                let tenKem = document.getElementById('tenKem').value;
+                let gia = document.getElementById('gia').value;
+                let soLuong = document.getElementById('soLuong').value;
+                let currentIndex = document.getElementById('currentIndex').value;
+    
+                // Kiểm tra xem các trường đầu vào có giá trị không trống hay không
+                if (tenKem.trim() === "" || gia.trim() === "" || soLuong.trim() === "") {
+                    alert("Vui lòng điền đầy đủ thông tin kem.");
+                    return;
+                }
+    
+                if (currentIndex === "") {
+                    // Thêm kem mới
+                    kemData.push({ tenKem: tenKem, gia: gia, soLuong: soLuong });
+                } else {
+                    // Sửa thông tin kem
+                    kemData[currentIndex].tenKem = tenKem;
+                    kemData[currentIndex].gia = gia;
+                    kemData[currentIndex].soLuong = soLuong;
+    
+                    // Đặt lại giá trị của currentIndex để quay lại chế độ thêm mới
+                    document.getElementById('currentIndex').value = "";
+                }
+    
+                // Hiển thị lại dữ liệu mới (có thể là danh sách tìm kiếm hoặc toàn bộ danh sách)
+                hienThiDuLieu();
+    
+                // Reset form và currentIndex khi thêm mới
+                if (currentIndex === "") {
+                    document.getElementById('tenKem').value = "";
+                    document.getElementById('gia').value = "";
+                    document.getElementById('soLuong').value = "";
+                    document.getElementById('currentIndex').value = "";
+                }
+            }
+    
+            // Hàm sửa kem
+            function suaKem(button) {
+                let row = button.parentNode.parentNode;
+                let index = row.rowIndex - 1;
+    
+                // Hiển thị thông tin lên form
+                document.getElementById('tenKem').value = kemData[index].tenKem;
+                document.getElementById('gia').value = kemData[index].gia;
+                document.getElementById('soLuong').value = kemData[index].soLuong;
+    
+                // Đặt giá trị của currentIndex để biết đang trong chế độ sửa
+                document.getElementById('currentIndex').value = index;
+            }
+    
+            // Hàm xóa kem
+            function xoaKem(button) {
+                let row = button.parentNode.parentNode;
+                let index = row.rowIndex - 1;
+    
+                // Xóa kem khỏi danh sách
+                kemData.splice(index, 1);
+    
+                // Kiểm tra xem có dữ liệu hay không
+                coDuLieu = kemData.length > 0;
+    
+                // Hiển thị lại dữ liệu mới
+                hienThiDuLieu();
+            }
+    
+            // Hàm tìm kiếm
+            function timKiem() {
+                let tuKhoa = document.getElementById('tuKhoa').value.toLowerCase();
+    
+                // Lọc danh sách kem theo từ khóa
+                let ketQuaTimKiem = kemData.filter(function (kem) {
+                    return kem.tenKem.toLowerCase().includes(tuKhoa);
+                });
+    
+                // Cập nhật trạng thái có dữ liệu và đã tìm kiếm
+                coDuLieu = ketQuaTimKiem.length > 0 || kemData.length > 0;
+                daTimKiem = ketQuaTimKiem.length > 0;
+    
+                // Hiển thị danh sách tìm kiếm
+                hienThiDuLieu(ketQuaTimKiem);
+            }
+    
+            // Gọi hàm hiển thị dữ liệu khi trang được tải
+            hienThiDuLieu();
+        </script>
+   
+    </section>
+</body>
+</html>
