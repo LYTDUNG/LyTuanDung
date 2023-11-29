@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bookstore</title>
+</head>
+<style>
+    .container {
+        /* Các thuộc tính CSS cho thẻ <div> bao bọc toàn bộ nội dung */
+        display: flex;
+        /* Sử dụng bố cục linh hoạt */
+        align-items: center;
+        /* Căn giữa các phần tử theo chiều dọc */
+        justify-content: center;
+        /* Căn giữa các phần tử theo chiều ngang */
+        height: 100vh;
+        /* Chiều cao bằng 100% chiều cao của cửa sổ */
+    }
+
+    .left {
+        /* Các thuộc tính CSS cho thẻ <div> chứa hình ảnh của chồng sách */
+        flex: 1;
+        /* Chiếm 1 phần của bố cục linh hoạt */
+        background-color: #fff;
+        /* Màu nền là xanh đậm */
+
+    }
+
+    .right {
+        /* Các thuộc tính CSS cho thẻ <div> chứa biểu mẫu đăng nhập */
+        flex: 1;
+        /* Chiếm 1 phần của bố cục linh hoạt */
+        background-color: #fff;
+        /* Màu nền là xanh nhạt */
+        padding: 50px;
+        /* Khoảng cách giữa nội dung và biên */
+    }
+
+
+    h1 {
+        /* Các thuộc tính CSS cho thẻ <h1> hiển thị tiêu đề của biểu mẫu */
+        color: black;
+        /* Màu chữ là trắng */
+        font-family: Arial, sans-serif;
+        /* Phông chữ là Arial hoặc sans-serif */
+        font-size: 36px;
+        /* Kích thước chữ là 36px */
+        text-align: left;
+        /* Căn giữa chữ */
+        margin-left: 40px;
+        margin-bottom: 20px;
+        /* Khoảng cách giữa chữ và phần tử bên dưới là 20px */
+    }
+
+    input {
+        /* Các thuộc tính CSS cho các thẻ <input> nhập dữ liệu */
+        display: block;
+        /* Hiển thị theo dạng khối */
+        /* width: 70%; */
+        /* Chiều rộng bằng 80% chiều rộng của phần tử cha */
+        margin: 10px 10px;
+        /* Khoảng cách giữa các phần tử là 10px, và căn giữa theo chiều ngang */
+        padding: 10px;
+        /* Khoảng cách giữa nội dung và biên */
+        border: none;
+        /* Không có viền */
+        border-radius: 5px;
+        /* Bán kính bo góc là 5px */
+        font-family: Arial, sans-serif;
+        /* Phông chữ là Arial hoặc sans-serif */
+        font-size: 18px;
+        /* Kích thước chữ là 18px */
+        border-color: black;
+        background-color: #D9D9D9;
+        margin-right: 5px;
+    }
+
+
+    button {
+        /* Các thuộc tính CSS cho thẻ <button> gửi dữ liệu */
+        display: block;
+        /* Hiển thị theo dạng khối */
+        width: 40%;
+        /* Chiều rộng bằng 80% chiều rộng của phần tử cha */
+        margin: 10px 10px;
+        /* Khoảng cách giữa các phần tử là 10px, và căn giữa theo chiều ngang */
+        padding: 10px;
+        /* Khoảng cách giữa nội dung và biên */
+        border: none;
+        /* Không có viền */
+        border-radius: 5px;
+        /* Bán kính bo góc là 5px */
+        background-color: #3a7bd5;
+        /* Màu nền là trắng */
+        color: black;
+        /* Màu chữ là xanh nhạt */
+        font-family: Arial, sans-serif;
+        /* Phông chữ là Arial hoặc sans-serif */
+        font-size: 18px;
+        /* Kích thước chữ là 18px */
+        cursor: pointer;
+        /* Con trỏ chuột là hình bàn tay */
+    }
+
+    button:hover {
+        /* Các thuộc tính CSS cho thẻ <button> khi di chuột qua */
+        background-color: rgb(15, 47, 92);
+        /* Màu nền là xanh nhạt */
+        color: white;
+        /* Màu chữ là trắng */
+    }
+
+    .options {
+        /* Các thuộc tính CSS cho thẻ <div> chứa các tùy chọn khác của biểu mẫu */
+        display: flex;
+        /* Sử dụng bố cục linh hoạt */
+        align-items: center;
+        /* Căn giữa các phần tử theo chiều dọc */
+        justify-content: space-between;
+        /* Căn đều các phần tử theo chiều ngang */
+        width: 80%;
+        /* Chiều rộng bằng 80% chiều rộng của phần tử cha */
+        margin: 10px auto;
+        /* Khoảng cách giữa các phần tử là 10px, và căn giữa theo chiều ngang */
+    }
+
+    label {
+        /* Các thuộc tính CSS cho thẻ <label> hiển thị văn bản cho hộp kiểm */
+        color: black;
+        /* Màu chữ là trắng */
+        font-family: Arial, sans-serif;
+        /* Phông chữ là Arial hoặc sans-serif */
+        font-size: 18px;
+        /* Kích thước chữ là 18px */
+
+
+    }
+
+    a {
+        /* Các thuộc tính CSS cho các thẻ <a> tạo các liên kết */
+        color: black;
+        /* Màu chữ là trắng */
+        font-family: Arial, sans-serif;
+        /* Phông chữ là Arial hoặc sans-serif */
+        font-size: 18px;
+        /* Kích thước chữ là 18px */
+        text-decoration: none;
+        /* Không có gạch chân */
+    }
+
+    a:hover {
+        /* Các thuộc tính CSS cho các thẻ <a> khi di chuột qua */
+        text-decoration: underline;
+        /* Có gạch chân */
+    }
+
+    p {
+        /* Các thuộc tính CSS cho thẻ <p> hiển thị văn bản cho tùy chọn đăng ký */
+        text-align: center;
+        /* Căn giữa chữ */
+        margin-right: 300px;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+    }
+
+    .login-form {
+        background-color: #fff;
+        /*padding: 20px;*/
+        border-radius: 8px;
+
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .remember-me label {
+        margin-left: 8px;
+    }
+
+    .forgot-password {
+        text-align: left;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="left">
+            <!-- Nội dung bên trái -->
+            <div class="left">
+                <img src="assets/img/books.webp" alt="Chồng sách" width="500" height="600">
+            </div>
+
+        </div>
+        <div class="right">
+            <!-- Nội dung bên phải -->
+            <div class="right">
+                <form action="login.php" method="POST" id="login-form">
+                    <!-- Các trường và nút của biểu mẫu -->
+                    <h1>Đăng nhập</h1>
+                    <input type="text" name="phone_or_email" placeholder="Số điện thoại hoặc email">
+                    <input type="password" name="password" placeholder="Mật khẩu">
+                    <button type="submit" value="Đăng nhập">Đăng nhập</button>
+                    <div class="login-form">
+                        <form action="#" method="post">
+                            <!-- Other form fields go here -->
+
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">Ghi nhớ mật khẩu</label> &nbsp; &nbsp; &nbsp;
+                                <a href="forgot.php" value="Quên mật khẩu ?">Quên mật khẩu ?</a>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                    <p>Hoặc</p>
+                    <p>Bạn chưa có tài khoản ? <a href="register.php" value="Đăng ký">Đăng ký</a>.</p>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

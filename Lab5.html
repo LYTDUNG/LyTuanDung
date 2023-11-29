@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>User scenario</title>
+    <style>
+        /* Add any additional styles here if needed */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-image: 10px;
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            display: block;
+            /* To remove extra space below inline images */
+            border-style: solid;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- User Scenario Image -->
+        <p>Image of user scenario :</p>
+        <img src="assets/img/user_scenario.png" alt="User Scenario">
+
+        <!-- Account Creation Form -->
+        <p onclick="loadUserDesign()">Design created in HTML. View the design <a href="user.html">here</a>.</p>
+
+        <!-- Link to Figma Design -->
+        <p onlick="loadUserDesignFm()">Design created on Figma. View the design<a
+                href="https://www.figma.com/file/fxejpbeOzkLc2iBCHeTept/Untitled?type=design&node-id=0%3A1&mode=design&t=uAdEAjoI5swZpmQd-1">here</a>
+        </p>
+    </div>
+
+    <script>
+        function loadUserDesign() {
+            fetch('user.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        function loadUserDesignFm() {
+            fetch('user.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.body.innerHTML = data;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>
