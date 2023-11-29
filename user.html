@@ -59,7 +59,7 @@
         /* Các thuộc tính CSS cho các thẻ <input> nhập dữ liệu */
         display: block;
         /* Hiển thị theo dạng khối */
-        /* width: 70%; */
+         /*width: 50%; */
         /* Chiều rộng bằng 80% chiều rộng của phần tử cha */
         margin: 10px 10px;
         /* Khoảng cách giữa các phần tử là 10px, và căn giữa theo chiều ngang */
@@ -83,7 +83,7 @@
         /* Các thuộc tính CSS cho thẻ <button> gửi dữ liệu */
         display: block;
         /* Hiển thị theo dạng khối */
-        width: 40%;
+        width: 34%;
         /* Chiều rộng bằng 80% chiều rộng của phần tử cha */
         margin: 10px 10px;
         /* Khoảng cách giữa các phần tử là 10px, và căn giữa theo chiều ngang */
@@ -159,9 +159,9 @@
 
     p {
         /* Các thuộc tính CSS cho thẻ <p> hiển thị văn bản cho tùy chọn đăng ký */
-        text-align: center;
+        text-align: left;
         /* Căn giữa chữ */
-        margin-right: 300px;
+        margin-bottom: 15px;
         font-size: 18px;
         font-family: Arial, sans-serif;
     }
@@ -198,36 +198,36 @@
             </div>
 
         </div>
+
+        <!-- Nội dung bên phải -->
         <div class="right">
-            <!-- Nội dung bên phải -->
-            <div class="right">
-                <form action="login.php" method="POST" id="login-form">
-                    <!-- Các trường và nút của biểu mẫu -->
-                    <h1>Đăng nhập</h1>
-                    <input type="text" name="phone_or_email" placeholder="Số điện thoại hoặc email">
-                    <input type="password" name="password" placeholder="Mật khẩu">
-                    <button type="submit" value="Đăng nhập">Đăng nhập</button>
-                    <div class="login-form">
-                        <form action="#" method="post">
-                            <!-- Other form fields go here -->
+            <form action="login.php" method="POST" id="login-form">
+                <!-- Các trường và nút của biểu mẫu -->
+                <h1>Đăng nhập</h1>
+                <input type="text" name="phone_or_email" placeholder="Số điện thoại hoặc email">
+                <input type="password" name="password" placeholder="Mật khẩu">
+                <button type="submit" value="Đăng nhập">Đăng nhập</button>
+                <div class="login-form">
+                    <form action="#" method="post">
+                        <!-- Other form fields go here -->
 
-                            <div class="remember-me">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">Ghi nhớ mật khẩu</label> &nbsp; &nbsp; &nbsp;
-                                <a href="forgot.php" value="Quên mật khẩu ?">Quên mật khẩu ?</a>
-                            </div>
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Ghi nhớ mật khẩu</label> &nbsp; &nbsp; &nbsp;
+                            <a href="forgot.php" value="Quên mật khẩu ?">Quên mật khẩu ?</a>
+                        </div>
 
 
 
-                        </form>
-                    </div>
-                    <p>Hoặc</p>
-                    <p>Bạn chưa có tài khoản ? <a href="register.php" value="Đăng ký">Đăng ký</a>.</p>
+                    </form>
+                </div>
+                <p style ="text-align: left;margin-left: 100px;">Hoặc</p>
+                <p>Bạn chưa có tài khoản ? <a href="register.php" value="Đăng ký">Đăng ký</a>.</p>
 
-                </form>
-            </div>
-
+            </form>
         </div>
+
+
     </div>
 
 </body>
