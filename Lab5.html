@@ -55,15 +55,22 @@
 
     <script>
         function loadUserDesign() {
-            fetch('user.html')
+            fetch('user.html', {
+                headers: {
+                    'Cache-Control': 'no-store, no-cache, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
+            })
                 .then(response => response.text())
                 .then(data => {
                     document.body.innerHTML = data;
                 })
                 .catch(error => console.error('Error:', error));
         }
+
         function loadUserDesignFm() {
-            fetch('user.html')
+            fetch('https://www.figma.com/file/fxejpbeOzkLc2iBCHeTept/Untitled?type=design&node-id=0%3A1&mode=design&t=uAdEAjoI5swZpmQd-1')
                 .then(response => response.text())
                 .then(data => {
                     document.body.innerHTML = data;
