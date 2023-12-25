@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Z-Pattern Blog</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+
+        header,
+        nav,
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin-right: 20px;
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        nav li:hover {
+            color: #3498db;
+            background-color: #2c3e50;
+        }
+
+        #main-content {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        #primary {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        article {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #ecf0f1;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        article:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        article h2 {
+            color: #333;
+        }
+
+        article p {
+            color: #555;
+        }
+
+        article a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        article a:hover {
+            text-decoration: underline;
+        }
+
+        #secondary {
+            width: 100%;
+        }
+
+        /* Tabs Styles */
+        #tabs {
+            text-align: left;
+        }
+
+        .tab-button,
+        .tab-content h2,
+        .tab-text {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .tab-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tab-button:hover {
+            background-color: #2980b9;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        #designTab img,
+        #implementationTab p {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1em;
+            clear: both;
+        }
+
+        #secondary {
+            display: flex;
+            padding: 10px 10px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .widget {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .widget h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .widget form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .widget input,
+        .widget button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .widget input {
+            flex: 1;
+        }
+
+        .widget button {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .widget button:hover {
+            background-color: #2980b9;
+        }
+
+        .widget ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .widget li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .widget li:last-child {
+            border-bottom: none;
+        }
+
+        .widget a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .widget a:hover {
+            text-decoration: underline;
+        }
+
+        #designTab img {
+            width: 500px;
+            height: 500px;
+        }
+
+        /* Updated Styles for Download Buttons */
+        #designTab a,
+        #implementationTab a {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        #designTab a:hover,
+        #implementationTab a:hover {
+            background-color: #2980b9;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>My Z-Pattern Blog</h1>
+        <p>Welcome to our blog exploring the Z-Pattern design!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Archives</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><button id="designTabButton" class="tab-button" onclick="openTab('designTab')"><span
+                        class="tab-text">Design</span></button></li>
+            <li><button id="implementationTabButton" class="tab-button" onclick="openTab('implementationTab')"><span
+                        class="tab-text">Implementation</span></button></li>
+        </ul>
+    </nav>
+
+    <div id="main-content">
+        <div id="tabs">
+            <div id="designTab" class="tab-content">
+                <h2>Design Tab</h2>
+                <p>Design on paper:</p>
+                <img src="assets/img/mauZ.jpg" alt="Paper Design Snapshot">
+                <p><a href="download_paper_design.jpg" download>Download Design on paper</a></p>
+                <p>Design on Figma:</p>
+                <img src="assets/img/Figma-Z.png" alt="Figma Design Snapshot">
+                <p><a href="assets/img/Z-Pattern.pdf" download>Download Design on Figma</a></p>
+                <p><a href="https://www.figma.com/file/USQFB6k2NHihON53qNgYhX/Untitled?type=design&node-id=0%3A1&mode=design&t=8j4JkA9Ry6qBIAPJ-1"
+                        download>Link to Design on Figma</a></p>
+            </div>
+
+            <div id="implementationTab" class="tab-content">
+                <h2>Implementation Tab</h2>
+                <p>Trong menu Labs, tạo 1 menu Lab6 (file lab6.html) sau đó tạo 2 tab Ex1, Ex2 </p>
+                <p> Ex1: Thiết kế một trang Web đơn giản sử dụng mẫu F-pattern ==> chuyển sang html (ex1.html)</p>
+                <p>Ex2: Thiết kế một trang Web sử dụng mẫu Z-pattern ==> chuyển sang html (ex2.html)</p>
+                <p>Với cả Ex1, Ex2: Tạo 2 tab Design và Implementation: </p>
+                <p> + Design: chụp lại hình ảnh để có cái nhìn tổng quan về file thiết kế (thiết kế trên giấy và
+                    Figma),<br> có
+                    nút Download để download file thiết kế về nếu muốn</p>
+                <p>+ Implementation: nội dung phần hiện thực trên html </p>
+                <p> Upload lên github</p>
+            </div>
+        </div>
+        <section id="primary">
+            <article>
+                <h2>The Importance of Responsive Web Design</h2>
+                <p>Proin ac lectus a odio vehicula tincidunt. Nunc vestibulum...</p>
+                <a href="#">Read More</a>
+            </article>
+
+            <article>
+                <h2>Typography Tips for Web Designers</h2>
+                <p>Nulla facilisi. Duis sit amet ex a urna efficitur semper vitae id urna...</p>
+                <a href="#">Read More</a>
+            </article>
+
+            <article>
+                <h2>Creating Engaging User Experiences</h2>
+                <p>Integer non dapibus neque. Sed eu justo et risus ullamcorper feugiat...</p>
+                <a href="#">Read More</a>
+            </article>
+
+            <article>
+                <h2>Web Accessibility Best Practices</h2>
+                <p>Aliquam erat volutpat. Nam vitae ipsum id elit venenatis lacinia...</p>
+                <a href="#">Read More</a>
+            </article>
+
+            <article>
+                <h2>Understanding Color Theory</h2>
+                <p>Vivamus egestas magna ipsum, id rhoncus leo congue vel...</p>
+                <a href="#">Read More</a>
+            </article>
+
+            <article>
+                <h2>Latest Trends in UI/UX Design</h2>
+                <p>Cras tempor velit ac turpis commodo, in ullamcorper odio congue...</p>
+                <a href="#">Read More</a>
+            </article>
+        </section>
+
+        <aside id="secondary">
+            <div class="widget newsletter-widget">
+                <h2>Subscribe to Our Newsletter</h2>
+                <form action="#" method="post">
+                    <input type="email" name="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="widget popular-posts-widget">
+                <h2>Popular Posts</h2>
+                <ul>
+                    <li><a href="#">The Art of Web Design</a></li>
+                    <li><a href="#">Responsive vs Adaptive Design</a></li>
+                    <li><a href="#">Best Practices for Mobile UI</a></li>
+                    <li><a href="#">CSS Flexbox Tutorial</a></li>
+                </ul>
+            </div>
+
+            <div class="widget recent-comments-widget">
+                <h2>Recent Comments</h2>
+                <ul>
+                    <li>John Doe on <a href="#">The Importance of White Space</a></li>
+                    <li>Jane Smith on <a href="#">Web Typography Tips</a></li>
+                    <li>Bob Johnson on <a href="#">Color Psychology in Design</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 My Z-Pattern Blog. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            showTab('primary');
+
+            document.getElementById('designTabButton').addEventListener('click', function () {
+                openTab('designTab');
+            });
+
+            document.getElementById('implementationTabButton').addEventListener('click', function () {
+                openTab('implementationTab');
+            });
+        });
+
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+        }
+
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(function (tabContent) {
+                tabContent.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>
