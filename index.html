@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="#hero" class="site-logo"><img src="assets/img/logo.png" alt="logo"></a>
+                    <a href="#hero" class="site-logo"><img src="assets/img/logo-1.png" alt="logo"></a>
 
                 </div><!-- /.navbar-header -->
 
@@ -70,7 +70,8 @@
                     <ul class="nav navbar-nav navbar-right">
 
                         <li class="page-scroll"><a href="#hero">Home</a></li>
-                        <li class="page-scroll"><a href="#Lab4">Lab4</a>
+                        <li><a class="active" href="Labs.html">Labs</a></li>
+                        <!--<li class="page-scroll"><a href="#Lab4">Lab4</a>
                             <ul class="page-scroll">
                                 <li><a href="tabRequirement.html">Tab Requirement</a></li>
                                 <li><a href="tabDesign.html">Tab Design</a></li>
@@ -85,10 +86,9 @@
                             </ul>
                         </li>
                         <li class="page-scroll"><a href="Lab7.html">Lab7</a></li>
-                        <li class="page-scroll"><a href="Lab8.html">Lab8</a></li>
+                        <li class="page-scroll"><a href="Lab8.html">Lab8</a></li>-->
                         <li class="page-scroll"><a href="#about">About</a></li>
-                        <li class="page-scroll"><a href="#service">Service</a></li>
-                        <li class="page-scroll"><a href="#portfolio">Portfolio</a></li>
+                        <li class="page-scroll"><a href="result.html">Result</a></li>
                         <li class="page-scroll"><a href="#contact">Contact</a></li>
 
                     </ul><!-- /.navbar-nav -->
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="col-md-6 text-right">
-                    <img src="assets/img/alex-vidal.png" alt="alex-vidal">
+                   <!-- <img src="assets/img/alex-vidal.png" alt="alex-vidal">-->
                 </div>
 
             </div>
@@ -527,5 +527,29 @@
     <script src="assets/js/script.js"></script>
 
 </body>
-
+<script>
+    $(document).ready(function(){
+      // Activate tooltip
+      $('[data-toggle="tooltip"]').tooltip();
+      
+      // Select/Deselect checkboxes
+      var checkbox = $('table tbody input[type="checkbox"]');
+      $("#selectAll").click(function(){
+        if(this.checked){
+          checkbox.each(function(){
+            this.checked = true;                        
+          });
+        } else{
+          checkbox.each(function(){
+            this.checked = false;                        
+          });
+        } 
+      });
+      checkbox.click(function(){
+        if(!this.checked){
+          $("#selectAll").prop("checked", false);
+        }
+      });
+    });
+    </script>
 </html>
